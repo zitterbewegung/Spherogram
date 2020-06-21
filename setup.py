@@ -208,7 +208,12 @@ setup( name = 'spherogram',
                    'spherogram.links.test', 'spherogram.codecs',
                    'spherogram.dev', 'spherogram.dev.dev_jennet'],
        package_dir = {'spherogram' : 'spherogram_src', 'spherogram.dev':'dev'},
-       package_data = {'spherogram.links'  :  ['doc.pdf']}, 
+       package_data = {'spherogram.links'  :  ['doc.pdf']},
+       setup_requires=[
+        # Setuptools 18.0 properly handles Cython extensions.
+        'setuptools>=18.0',
+        'cython',
+       ],
        ext_modules = ext_modules,
        cmdclass =  {'clean': SpherogramClean,
                     'test': SpherogramTest,
